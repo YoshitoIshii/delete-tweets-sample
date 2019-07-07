@@ -1,0 +1,159 @@
+{
+  "id": "7a784b68-e4ce-4b4a-adb3-de6c6846d353",
+  "version": "2.0",
+  "name": "deletemytweets",
+  "url": "https://twitter.com",
+  "tests": [{
+    "id": "bab99dcc-fb83-403e-b77b-090e2788125b",
+    "name": "Delete",
+    "commands": [{
+      "id": "f309e351-cc6c-49e5-abed-c961d2b6527e",
+      "comment": "",
+      "command": "store",
+      "target": "yoshito_jp",
+      "targets": [],
+      "value": "twitterName"
+    }, {
+      "id": "be727111-8c3b-409f-9b9d-431eb4ba0055",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": "https://twitter.com/${twitterName}"
+    }, {
+      "id": "c8246a09-dd9d-42eb-98bc-dd516de00778",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ProfileCardStats-stat:nth-child(1) .ProfileCardStats-statValue",
+      "targets": [
+        ["css=.ProfileCardStats-stat:nth-child(1) .ProfileCardStats-statValue", "css:finder"],
+        ["xpath=//div[@id='page-container']/div/div/div/div[2]/ul/li/a/span[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/div/div/div[2]/ul/li/a/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'4,296')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c99316a-a73b-49eb-ad5c-93a591426fc6",
+      "comment": "",
+      "command": "times",
+      "target": "10",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a7707c8d-6199-4ac2-9e17-547bfb754db5",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "css=#stream-items-id li:nth-child(1) div.tweet@class",
+      "targets": [],
+      "value": "tweetClass"
+    }, {
+      "id": "be6cd475-088f-4aa5-ad44-514487ae0b77",
+      "comment": "",
+      "command": "echo",
+      "target": "${tweetClass}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f301af9b-18e2-46c8-8b25-50ee4146bbd5",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return \"$tweetClass\".indexOf(\"retweeted\") > 0",
+      "targets": [],
+      "value": "isRetweeted"
+    }, {
+      "id": "01cce7b8-c3ee-42a6-83f2-d71d3e1dc130",
+      "comment": "",
+      "command": "echo",
+      "target": "${isRetweeted}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d6166e9-1bff-4596-9989-f73c20d3d992",
+      "comment": "",
+      "command": "if",
+      "target": "${isRetweeted}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0170fe4d-107b-4e02-9291-87fd65459637",
+      "comment": "",
+      "command": "click",
+      "target": "css=#stream-items-id li:nth-child(1) div.retweeted .ProfileTweet-action--retweet .ProfileTweet-actionButtonUndo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23a7414d-67b6-458f-be79-d2bdf221ecce",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c2eb6c20-f6f9-4f85-9397-01d72376e0f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=#stream-items-id li:first-child .ProfileTweet-actionButton",
+      "targets": [
+        ["css=ul:nth-child(3) > .js-actionDelete > .dropdown-link", "css:finder"],
+        ["xpath=(//button[@type='button'])[57]", "xpath:attributes"],
+        ["xpath=//li[@id='stream-item-tweet-1064815670490103808']/div/div[2]/div/div/div/div/ul/li[6]/button", "xpath:idRelative"],
+        ["xpath=//li[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ツイートを削除')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e1cd7e7-cbf6-412d-bfb9-b5322edc504b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.js-actionDelete .dropdown-link",
+      "targets": [
+        ["css=.delete-action", "css:finder"],
+        ["xpath=//div[@id='delete-tweet-dialog-dialog']/div[2]/div[4]/button[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[4]/button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f8fc934e-8bfd-45b6-80a9-c192b31ae0e7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.delete-action",
+      "targets": [
+        ["css=.delete-action", "css:finder"],
+        ["xpath=//div[@id='delete-tweet-dialog-dialog']/div[2]/div[4]/button[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[4]/button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "664a6e57-3c5d-4180-bda5-9be96e088537",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "050efc3b-e4bf-4f8c-a612-faa3fc0beba0",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fcbe2297-097b-42e9-ab6a-2c57aa684024",
+      "comment": "",
+      "command": "echo",
+      "target": "\"hello, world\"",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1b26debc-7459-42a5-8bc1-fbb4875b47ec",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://twitter.com/"],
+  "plugins": []
+}
