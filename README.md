@@ -1,5 +1,24 @@
-# How to delete my tweet with selenium ide
+# Sample script for deleting twitter
 
-* install firefox
-* add SeleniumIDE plugin to firefox
-* run this script with selenium ide
+run in your tweets page using dev-tool.
+
+```js
+function deleteTweets() {
+    let tl = $("#timeline .tweet .js-actionDelete button")
+    tl.each(i => {
+        tl[i].click();
+        $("#delete-tweet-dialog button.delete-action").first().click();
+    })
+    $(window).scrollTop(0);
+    $(window).scrollTop($("#timeline").height());
+}
+intervalId = setInterval(() => {
+    let tl = $("#timeline .tweet .js-actionDelete button")
+    if (tl && tl.length > 10) {
+        deleteTweets();
+    }else {
+        clearInterval(intervalId);
+    }
+}, 3000)
+
+```
