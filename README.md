@@ -1,24 +1,36 @@
 # Sample script for deleting twitter
 
-run in your tweets page using dev-tool.
+いまのところリツイートには対応していない。
 
 ```js
-function deleteTweets() {
-    let tl = $("#timeline .tweet .js-actionDelete button")
-    tl.each(i => {
-        tl[i].click();
-        $("#delete-tweet-dialog button.delete-action").first().click();
-    })
-    $(window).scrollTop(0);
-    $(window).scrollTop($("#timeline").height());
-}
-intervalId = setInterval(() => {
-    let tl = $("#timeline .tweet .js-actionDelete button")
-    if (tl && tl.length > 10) {
-        deleteTweets();
-    }else {
-        clearInterval(intervalId);
+// Mar 2022
+
+// login and open your profile page.
+// open devtool and paste codes below.
+
+function deleteTopTweet(){
+    document.querySelectorAll('[aria-haspopup="menu"]')[1].click();
+    let me = document.querySelectorAll('[aria-haspopup="menu"]')[1];
+    let mi0 = document.querySelectorAll('[role="menuitem"]')[0];
+    if (mi0.querySelector('span').innerText == '削除' ) {
+        mi0.click();
+        document.querySelectorAll('[role="button"][data-testid="confirmationSheetConfirm"]')[0].click();
     }
-}, 3000)
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function deleteMultipleTweets(loop) {
+    for (let i = 0; i < loop; i++) {
+        deleteTopTweet();
+        console.log(`[${i}]deleted.`);
+        await sleep(500);
+    }
+    console.log('Done');
+}
+
+deleteMultipleTweets(100);
 
 ```
